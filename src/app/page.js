@@ -1,10 +1,10 @@
-import HomePage from "@/Components/HomePage/HomePage";
+import Banner from "@/Components/HomePage/Banner";
 
 
 export default function Home() {
   return (
-    <main>
-      <HomePage/>
+    <main className="container mx-auto">
+      <Banner/>
     </main>
   );
 }

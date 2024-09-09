@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-import logo from '../../../public/assets/logo.svg'
+import logo from '../../../public/assets/logo.svg';
 
 const Navbar = () => {
 
@@ -25,7 +24,7 @@ const Navbar = () => {
     ]
 
     return (
-        <div className="navbar bg-base-100 container ms-auto">
+        <div className="navbar bg-white text-black container mx-auto">
             <div className="navbar-start">
                 <Link href="/"><Image alt='logo' src={logo} height="50" width="80"></Image></Link>
             </div>
