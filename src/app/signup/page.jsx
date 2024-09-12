@@ -1,0 +1,42 @@
+import React from 'react';
+import img from '../../../public/assets/images/login/login.svg'
+import Link from 'next/link';
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
+import Image from 'next/image';
+
+const SignupPage = () => {
+    return (
+        <div className='flex justify-center items-center gap-10 my-10'>
+            <div>
+                <Image alt='banner' src={img} height={400} width={400}/>
+            </div>
+            <div className='w-96 border py-5 px-10'>
+                <h1 className='text-3xl text-black font-semibold text-center my-5'>Sign Up</h1>
+                <form className='flex flex-col gap-5'>
+                    <div>
+                        <label htmlFor="name">Name</label><br/>
+                        <input type="text" placeholder="your name" className="input input-bordered w-full max-w-xs" />
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label><br/>
+                        <input type="text" placeholder="your email" className="input input-bordered w-full max-w-xs" />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label><br/>
+                        <input type="text" placeholder="your password" className="input input-bordered w-full max-w-xs" />
+                    </div>
+                    <input type="submit" className='btn btn-primary text-white' value="Sign Up" />
+                </form>
+                <p className='text-center text-black my-3'>Or Sign Up with</p>
+                <div className='flex gap-3 text-3xl items-center justify-center'>
+                    <FcGoogle />
+                    <FaGithub />
+                </div>
+                <p className='text-center mt-3'>Already have an account ? <Link href="/login" className='font-bold text-primary'>Login</Link></p>
+            </div>
+        </div>
+    );
+};
+
+export default SignupPage;

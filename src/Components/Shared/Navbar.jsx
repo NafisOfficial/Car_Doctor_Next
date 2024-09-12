@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../../public/assets/logo.svg';
+import { CiSearch } from "react-icons/ci";
+import { IoBagHandleOutline } from "react-icons/io5";
 
 const Navbar = () => {
 
@@ -30,11 +32,13 @@ const Navbar = () => {
             </div>
             <div className="navbar-center lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    {navItems.map(dt=><li key={dt.path}><Link href={dt.path}>{dt.title}</Link></li>)}
+                    {navItems.map(dt => <li key={dt.path}><Link href={dt.path}>{dt.title}</Link></li>)}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
+            <div className="navbar-end gap-5 items-center text-lg">
+                <IoBagHandleOutline />
+                <CiSearch />
+                <a className="btn btn-primary btn-outline">Appointment</a>
             </div>
         </div>
     );

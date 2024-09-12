@@ -4,8 +4,6 @@ import { FaArrowRight } from "react-icons/fa";
 const ServicesCards = ({service}) => {
     const {title, img, price} = service || {};
 
-    console.log(title,img,price)
-
 
     return (
         <div>

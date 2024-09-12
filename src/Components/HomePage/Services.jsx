@@ -13,6 +13,7 @@ const Services = () => {
             <div className='grid grid-cols-3 items-center w-2/3 mx-auto gap-5'>
                 {servicesData.map((service)=><ServicesCards key={service._id} service={service}/>)}
             </div>
+            <div><button className='btn btn-outline btn-primary'>More Services</button></div>
         </div>
     );
 };
