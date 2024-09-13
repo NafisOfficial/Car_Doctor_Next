@@ -29,7 +29,7 @@ const LoginPage = () => {
                     <FcGoogle />
                     <FaGithub />
                 </div>
-                <p className='text-center mt-3'>Have an account ? <Link href="/signup" className='font-bold text-primary'>Sign In</Link></p>
+                <p className='text-center mt-3'>Have an account ? <Link href="/signup" className='font-bold text-primary'>Sign Up</Link></p>
             </div>
         </div>
     );
