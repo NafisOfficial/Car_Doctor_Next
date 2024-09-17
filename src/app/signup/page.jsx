@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 const SignupPage = () => {
 
-    const handleSignUp=(event)=>{
+    const handleSignUp= async (event)=>{
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
@@ -16,6 +16,18 @@ const SignupPage = () => {
 
         const user = {
             name,email,password
+        }
+
+        const res = await fetch("http://localhost:3000/signup/api",{
+            method: "POST",
+            headers:{
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+
+        if(res.status === 200){
+            event.target.reset();
         }
     }
 
