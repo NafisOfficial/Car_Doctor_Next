@@ -5,18 +5,21 @@ import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Image from 'next/image';
+import { signIn } from 'next-auth/react';
 
 const LoginPage = () => {
 
 
-    const handleLogin = (event) =>{
+    const handleLogin = async (event) =>{
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        const user = {
-            email, password
-        }
+        const res = await signIn("credentials", {
+            email,password,redirect: false
+        })
+
+        console.log(res);
 
     }
 
