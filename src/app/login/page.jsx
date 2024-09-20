@@ -6,10 +6,12 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import SocialLogin from '@/Components/Shared/SocialLogin';
 
 const LoginPage = () => {
 
-
+    const router = useRouter()
     const handleLogin = async (event) =>{
         event.preventDefault();
         const email = event.target.email.value;
@@ -19,16 +21,8 @@ const LoginPage = () => {
             email,password,redirect: false
         })
 
-        console.log(res);
+        if(res.status === 200)router.push("/");
 
-    }
-
-    const handleGoogleLogin =()=>{
-        console.log("Google login clicked");
-    }
-
-    const handleGithubLogin =()=>{
-        console.log("Github login clicked");
     }
 
 
@@ -56,10 +50,7 @@ const LoginPage = () => {
                     <input type="submit"  className='btn btn-primary text-white' value="Login" />
                 </form>
                 <p className='text-center text-black my-3'>Or Sign in with</p>
-                <div className='flex gap-3 text-3xl items-center justify-center'>
-                    <FcGoogle onClick={handleGoogleLogin}/>
-                    <FaGithub onClick={handleGithubLogin}/>
-                </div>
+                <SocialLogin/>
                 <p className='text-center mt-3'>Have an account ? <Link href="/signup" className='font-bold text-primary'>Sign Up</Link></p>
             </div>
         </div>

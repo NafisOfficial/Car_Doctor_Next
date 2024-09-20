@@ -1,29 +1,15 @@
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../../public/assets/logo.svg';
 import { CiSearch } from "react-icons/ci";
 import { IoBagHandleOutline } from "react-icons/io5";
+import { useSession } from 'next-auth/react';
 
 const Navbar = () => {
 
-    const navItems = [
-        {
-            title: "Home",
-            path: "/"
-        },
-        {
-            title: "About",
-            path: "/about"
-        },
-        {
-            title: "Services",
-            path: "/services"
-        },
-        {
-            title: "Contact",
-            path: "/contact"
-        },
-    ]
+    const session = useSession();
+    console.log(session);
 
     return (
         <div className="navbar bg-white text-black container mx-auto">
@@ -39,10 +25,29 @@ const Navbar = () => {
                 <IoBagHandleOutline />
                 <CiSearch />
                 <a className="btn btn-primary btn-outline">Appointment</a>
-                <Link href="/login" className='btn btn-primary text-white'>Login</Link>
+                {session.data?<Link href="/login" className='btn btn-primary text-white'>Logout</Link>:<Link href="/login" className='btn btn-primary text-white'>Login</Link>}
             </div>
         </div>
     );
 };
+
+const navItems = [
+    {
+        title: "Home",
+        path: "/"
+    },
+    {
+        title: "About",
+        path: "/about"
+    },
+    {
+        title: "Services",
+        path: "/services"
+    },
+    {
+        title: "Contact",
+        path: "/contact"
+    },
+]
 
 export default Navbar;

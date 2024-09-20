@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Image from 'next/image';
+import SocialLogin from '@/Components/Shared/SocialLogin';
 
 const SignupPage = () => {
 
@@ -31,13 +32,6 @@ const SignupPage = () => {
         }
     }
 
-    const handleGoogleSignUp =()=>{
-        console.log("Google signup clicked");
-    }
-
-    const handleGithubSingUp =()=>{
-        console.log("Github signup clicked");
-    }
 
     return (
         <div className='flex justify-center items-center gap-10 my-10'>
@@ -62,10 +56,7 @@ const SignupPage = () => {
                     <input type="submit" className='btn btn-primary text-white' value="Sign Up" />
                 </form>
                 <p className='text-center text-black my-3'>Or Sign Up with</p>
-                <div className='flex gap-3 text-3xl items-center justify-center'>
-                    <FcGoogle onClick={handleGoogleSignUp}/>
-                    <FaGithub onClick={handleGithubSingUp}/>
-                </div>
+                <SocialLogin/>
                 <p className='text-center mt-3'>Already have an account ? <Link href="/login" className='font-bold text-primary'>Login</Link></p>
             </div>
         </div>
