@@ -21,7 +21,7 @@ const LoginPage = () => {
             email,password,redirect: false
         })
 
-        if(res.status === 200)router.push("/");
+        if(res.status === "authenticated")router.push("/");
 
     }
 

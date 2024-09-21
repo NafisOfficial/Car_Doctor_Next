@@ -1,12 +1,19 @@
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
 const SocialLogin = () => {
 
+    const session = useSession();
+    const router = useRouter();
     const handleSocialLogin=async (provider)=>{
-        const res = signIn(provider)
+        const res = signIn(provider);
+    }
+
+    if(session.status === "authenticated"){
+        router.push("/");
     }
 
 

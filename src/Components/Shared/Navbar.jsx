@@ -4,12 +4,25 @@ import Link from 'next/link';
 import logo from '../../../public/assets/logo.svg';
 import { CiSearch } from "react-icons/ci";
 import { IoBagHandleOutline } from "react-icons/io5";
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 const Navbar = () => {
 
     const session = useSession();
-    console.log(session);
+
+    const handleLogout = () =>{
+        signOut();
+    }
+
+    const handleStatus=()=>{
+        if(session.status==="unauthenticated"){
+            return <Link href="/login" className='btn btn-primary text-white'>Login</Link>
+        }else if(session.status === "loading"){
+            return <span className="loading loading-spinner text-primary"></span>
+        }else if(session.status === "authenticated"){
+            return <button onClick={handleLogout} className='btn btn-primary text-white'>Logout</button>
+        }
+    }
 
     return (
         <div className="navbar bg-white text-black container mx-auto">
@@ -25,7 +38,7 @@ const Navbar = () => {
                 <IoBagHandleOutline />
                 <CiSearch />
                 <a className="btn btn-primary btn-outline">Appointment</a>
-                {session.data?<Link href="/login" className='btn btn-primary text-white'>Logout</Link>:<Link href="/login" className='btn btn-primary text-white'>Login</Link>}
+                {handleStatus()}
             </div>
         </div>
     );
