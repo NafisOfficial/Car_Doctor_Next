@@ -1,12 +1,12 @@
-export const AllServices = async () => {
+export const getAllServices = async () => {
     const res = await fetch('http://localhost:3000/services/api/get-all')
-    const services = res.json()
+    const services = await res.json()
     return services;
 }
 
 
-export const serviceDetails= async (id)=>{
+export const getServiceDetails= async (id)=>{
     const res = await fetch(`http://localhost:3000/services/api/${id}`)
-    const service = res.json()
+    const service = await res.json()
     return service;
 }

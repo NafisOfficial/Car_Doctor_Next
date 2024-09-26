@@ -1,13 +1,13 @@
 import React from 'react';
 import ServicesCards from '../Cards/ServicesCards';
-import { AllServices } from '@/lib/getServices';
+import { getAllServices } from '@/lib/getServices';
 
 
 
 
 const Services = async () => {
 
-    const servicesData = await AllServices();
+    const servicesData = await getAllServices();
 
     return (
         <div className='flex flex-col text-center gap-8 mb-10'>
