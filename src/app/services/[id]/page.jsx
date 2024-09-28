@@ -4,6 +4,7 @@ import FacilityCard from '@/Components/ServiceDetailsPage/FacilityCard';
 import CommonBanner from '@/Components/Shared/CommonBanner';
 import { getServiceDetails } from '@/lib/getServices';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 
@@ -15,7 +16,7 @@ export const metadata = {
 
 const DetailsService = async ({ params }) => {
     const service = await getServiceDetails(params.id);
-    const { title, img, price, description, facility } = service;
+    const {_id, title, img, price, description, facility } = service;
 
     return (
         <div className='container mx-auto'>
@@ -35,7 +36,7 @@ const DetailsService = async ({ params }) => {
                     <DownloadCard/>
                     <DiscountCard/>
                     <h1 className='font-bold text-3xl text-black'>Price ${price}</h1>
-                    <button className='btn btn-primary text-white'>Proceed CheckOut</button>
+                    <Link href={`http://localhost:3000/checkout/${_id}`} className='btn btn-primary text-white'>Proceed CheckOut</Link>
                 </div>
             </div>
         </div>
