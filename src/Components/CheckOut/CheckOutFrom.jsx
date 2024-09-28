@@ -2,23 +2,31 @@
 import { useSession } from 'next-auth/react';
 
 
-const CheckOutFrom = ({service}) => {
+const CheckOutFrom = ({ service }) => {
 
     const session = useSession();
-    const {email,name} = session?.data?.user || {};
+    const { email, name } = session?.data?.user || {};
 
-    console.log(service);
 
-    const handleSubmit=(event)=>{
+    const handleSubmit = async(event) => {
         event.preventDefault();
         const name = event.target.name.value;
         const date = event.target.date.value;
         const email = event.target.name.value;
-        const amount = event.target.name.value;
+        const price = service.price;
         const phone = event.target.name.value;
         const address = event.target.address.value;
+        const newBookings = { name, date, email, price, phone, address,serviceId: service._id,serviceTittle: service.tittle }
 
-        console.log(name,date,email,amount,phone,address);
+        const res = await fetch("http://localhost:3000/checkout/api/new-booking",{
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newBookings)
+        })
+
+        console.log(res);
     }
 
 
@@ -64,7 +72,7 @@ const CheckOutFrom = ({service}) => {
                     </div>
                 </div>
                 <div className='text-center'>
-                    <input type="submit" value="Submit" className='btn btn-primary text-white my-5 px-10'/>
+                    <input type="submit" value="Submit" className='btn btn-primary text-white my-5 px-10' />
                 </div>
             </form>
         </div>
