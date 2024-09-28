@@ -28,9 +28,6 @@ const LoginPage = () => {
 
 
 
-
-
-
     return (
         <div className='flex justify-center items-center gap-10 my-10'>
             <div>
