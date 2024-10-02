@@ -1,20 +1,22 @@
 "use client"
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 
 const CheckOutFrom = ({ service }) => {
 
     const session = useSession();
     const { email, name } = session?.data?.user || {};
+    const router = useRouter();
 
 
     const handleSubmit = async(event) => {
         event.preventDefault();
         const name = event.target.name.value;
         const date = event.target.date.value;
-        const email = event.target.name.value;
+        const email = event.target.email.value;
         const price = service.price;
-        const phone = event.target.name.value;
+        const phone = event.target.phone.value;
         const address = event.target.address.value;
         const newBookings = { name, date, email, price, phone, address,serviceId: service._id,serviceTittle: service.tittle }
 
@@ -26,7 +28,10 @@ const CheckOutFrom = ({ service }) => {
             body: JSON.stringify(newBookings)
         })
 
-        console.log(res);
+        if(res.status === 200){
+            event.target.reset();
+            router.push("/")
+        }
     }
 
 

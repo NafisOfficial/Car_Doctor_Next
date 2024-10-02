@@ -2,8 +2,6 @@
 import React from 'react';
 import img from '../../../public/assets/images/login/login.svg'
 import Link from 'next/link';
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
